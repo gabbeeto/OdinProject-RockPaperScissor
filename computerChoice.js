@@ -4,7 +4,21 @@ let choice = ['rock', 'paper', 'scissor'];
 humanPoints = 0;
 computerPoints = 0;
 
-let playerName = prompt(`what's your name`);
+
+let playerName;
+//let playerName = prompt(`what's your name`);
+function getPlayerName(){
+
+let playerName = document.querySelector('#nameInputContainer input').value;
+document.querySelector('#nameInputContainer').style.display = "none";
+
+document.querySelector('#humanChoiceContainer').style.display = "flex";
+}
+
+
+PlayerNameDoneButton = document.querySelector('#nameInputContainer button');
+PlayerNameDoneButton.addEventListener('click', getPlayerName)
+
 
 let computerChoice;
 
@@ -64,21 +78,21 @@ alert(`it's a tie because both of you chose scissor`);
 
 }
 
-let round = 1;
+//let round = 1;
 
-while(humanPoints < 5 && computerPoints < 5){
-humanChoice = prompt(`rock, paper or scissor?`);
-getRandomChoice();
-rules();
-alert(`Round ${round} \nHuman Points: ${humanPoints}. \nComputer Points: ${computerPoints}`)
-round += 1;
-}
+//while(humanPoints < 5 && computerPoints < 5){
+//humanChoice = prompt(`rock, paper or scissor?`);
+//getRandomChoice();
+//rules();
+//alert(`Round ${round} \nHuman Points: ${humanPoints}. \nComputer Points: ${computerPoints}`)
+//round += 1;
+//}
 
-if(humanPoints > computerPoints){
-alert(`${playerName} won`);
-}
-else{
-alert(`computer won`);
-}
+//if(humanPoints > computerPoints){
+//alert(`${playerName} won`);
+//}
+//else{
+//alert(`computer won`);
+//}
 
 

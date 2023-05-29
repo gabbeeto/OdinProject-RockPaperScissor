@@ -10,3 +10,33 @@ body{
 background-color: #14191A;
 color: white;
 }
+
+header{
+border-bottom: 4px solid white;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 10px;
+}
+
+#nameInputContainer{
+margin: 20px;
+padding: 20px;
+display: flex;
+flex-direction: column;
+gap: 10px;
+border: 2px solid white;
+}
+
+
+#humanChoiceContainer{
+display: none;
+align-items: center;
+flex-direction: column;
+}
+
+
+#invisibleRockPaperScissorImagesContainer{
+display: flex;
+
+}
