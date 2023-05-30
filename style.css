@@ -19,15 +19,22 @@ justify-content: center;
 padding: 10px;
 }
 
-#nameInputContainer{
+#nameInputContainer, #difficultySystem{
 margin: 20px;
 padding: 20px;
-display: flex;
 flex-direction: column;
 gap: 10px;
 border: 2px solid white;
 }
 
+#nameInputContainer{
+display: flex;
+}
+
+
+#difficultySystem{
+display: none;
+}
 
 #humanChoiceContainer{
 display: none;
@@ -36,7 +43,7 @@ flex-direction: column;
 }
 
 
-#invisibleRockPaperScissorImagesContainer{
+#invisibleContainer{
 display: flex;
 
 }
