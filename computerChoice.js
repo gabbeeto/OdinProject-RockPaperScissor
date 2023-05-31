@@ -85,7 +85,7 @@ message.innerText = `it's a tie because both of you chose paper`;
 else if(computerChoice == 'scissor'){
 addPointsToComputer();
 computerPointText.innerHTML = `Duck points = ${computerPoints}`;
-message.innerText = `Duck wins because ${playerName} chose paper and duck chose 'rock'`;
+message.innerText = `Duck wins because ${playerName} chose paper and duck chose 'scissor'`;
 }
 		
 		break;
