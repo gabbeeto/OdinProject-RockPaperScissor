@@ -79,6 +79,12 @@ color: #ACAD81;
 color: #7BA8A8;
 }
 
+
+#finalText{
+padding: 20px;
+
+}
+
 .lose{
 color: #AD7979;
 }
@@ -88,3 +94,12 @@ color: #AD7979;
 color:#ACAD81;}
 
 
+
+#endingImage{
+margin: 20px;
+border: 2px solid white;
+border-radius: 30px;
+width: 400px;
+height: 400px;
+
+}

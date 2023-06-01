@@ -1,5 +1,4 @@
 let humanChoice;
-
 let choice = ['rock', 'paper', 'scissor'];
 let humanPoints = 0;
 let computerPoints = 0;
@@ -136,15 +135,23 @@ message.style.color = '#ACAD81';
 
 else {
 document.querySelector('#humanChoiceContainer').parentElement.removeChild(document.querySelector('#humanChoiceContainer'));
+
 let finalText = document.createElement('h1');
+finalText.id = 'finalText';
+
+const endingImage = document.createElement('img');
+endingImage.id = 'endingImage';
 if(humanPoints > computerPoints){
 finalText.innerText = 'human won!!!!!.. you saved this planet agaisnt this evil duck...';
+endingImage.src = 'images/goodEnding.png';
+
 }
 else{
 finalText.innerText = 'you got defeated by the evil duck';
+endingImage.src = 'images/badEnding.png';
 }
 document.body.appendChild(finalText);
-
+document.body.appendChild(endingImage);
 
 }
 
