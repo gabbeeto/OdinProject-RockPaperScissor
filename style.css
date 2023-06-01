@@ -25,10 +25,33 @@ padding: 20px;
 flex-direction: column;
 gap: 10px;
 border: 2px solid white;
+border-radius: 50px;
 }
 
 #nameInputContainer{
 display: flex;
+}
+
+#nameInputContainer img{
+width: 400px;
+height: 400px;
+border-radius: 50px;
+border: 2px solid white;
+}
+
+#nameInputContainer input{
+border-radius: 20px;
+padding: 20px;
+border: 1px solid white;
+background-color: #80A5A5;
+color: black;
+}
+
+ button{
+border: 1px solid white;
+border-radius: 20px;
+padding: 5px;
+background-color: #81ADAD;
 }
 
 
@@ -47,3 +70,21 @@ flex-direction: column;
 display: flex;
 
 }
+
+#message{
+color: #ACAD81;
+}
+
+.win{
+color: #7BA8A8;
+}
+
+.lose{
+color: #AD7979;
+}
+
+
+.tie{
+color:#ACAD81;}
+
+

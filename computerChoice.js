@@ -9,11 +9,15 @@ let playerName;
 function getPlayerName(){
 
 playerName = document.querySelector('#nameInputContainer input').value;
+
+if(!playerName){
+playerName = 'Human';
+
+	}
 document.querySelector('#nameInputContainer').style.display = "none";
 
 document.querySelector('#difficultySystem').style.display = "flex";
-
-
+document.querySelector('#humanPoints').innerText = `${playerName} points = 0`;
 }
 
 
@@ -48,18 +52,21 @@ if(computerChoice == 'rock'){
 addUnfairPointsWhenHardDifficulty();
 computerPointText.innerHTML = `Duck points = ${computerPoints}`;
 message.innerText = `it's a tie because both of you chose rock`;
+message.style.color = '#ACAD81';
 }
 
 else if(computerChoice == 'paper'){
 addPointsToComputer();
 computerPointText.innerHTML = `Duck points = ${computerPoints}`;
 message.innerHTML = `duck wins because ${playerName} chose rock and duck chose 'paper'`;
+message.style.color = '#AD7979';
 }
 
 else if(computerChoice == 'scissor'){
 addPointsToHuman();
-humanPointText.innerHTML = `human points = ${humanPoints}`;
+humanPointText.innerHTML = `${playerName} points = ${humanPoints}`;
 message.innerText = `${playerName} wins because duck chose scissor and ${playerName} chose rock`;
+message.style.color = '#7BA8A8';
 }
 
 		break;
@@ -72,21 +79,26 @@ message.innerText = `${playerName} wins because duck chose scissor and ${playerN
 
 if(computerChoice == 'rock'){
 addPointsToHuman();
-humanPointText.innerHTML = `human points = ${humanPoints}`;
+humanPointText.innerHTML = `${playerName} points = ${humanPoints}`;
 message.innerText = `${playerName} wins because duck chose 'rock' and ${playerName} chose paper`;
+message.style.color = '#7BA8A8';
 }
 
 else if(computerChoice == 'paper'){
 addUnfairPointsWhenHardDifficulty();
 computerPointText.innerHTML = `Duck points = ${computerPoints}`;
 message.innerText = `it's a tie because both of you chose paper`;
+message.style.color = '#ACAD81';
 }
 
 else if(computerChoice == 'scissor'){
 addPointsToComputer();
 computerPointText.innerHTML = `Duck points = ${computerPoints}`;
 message.innerText = `Duck wins because ${playerName} chose paper and duck chose 'scissor'`;
+	
+message.style.color = '#AD7979';
 }
+
 		
 		break;
 
@@ -99,18 +111,22 @@ if(computerChoice == 'rock'){
 addPointsToComputer();
 computerPointText.innerHTML = `Duck points = ${computerPoints}`;
 message.innerText = `Duck wins because ${playerName} chose scissor and duck choose rock`;
+
+message.style.color = '#AD7979';
 }
 
 else if(computerChoice == 'paper'){
 addPointsToHuman();
-humanPointText.innerHTML = `human points = ${humanPoints}`;
+humanPointText.innerHTML = `${playerName} points = ${humanPoints}`;
 message.innerText = `${playerName} wins because duck chose paper and ${playerName} chose scissor`;
+message.style.color = '#7BA8A8';
 }
 
 else if(computerChoice == 'scissor'){
 addUnfairPointsWhenHardDifficulty();
 computerPointText.innerHTML = `Duck points = ${computerPoints}`;
 message.innerText = `it's a tie because both of you chose scissor`;
+message.style.color = '#ACAD81';
 }
 
 		break;
@@ -146,7 +162,7 @@ switch (computerDifficulty) {
 	case 'hard':
 		humanPoints += 0.75;
 		break;
-	case 'ultrahard':
+	case 'ultraHard':
 		humanPoints += 0.50;
 		break;
 	case 'almostImpossible':
@@ -167,7 +183,7 @@ switch (computerDifficulty) {
 	case 'hard':
 		computerPoints += 1.5;
 		break;
-	case 'ultrahard':
+	case 'ultraHard':
 		computerPoints += 2.5;
 		break;
 	case 'almostImpossible':
@@ -178,7 +194,7 @@ switch (computerDifficulty) {
 
 function addUnfairPointsWhenHardDifficulty(){
 switch (computerDifficulty) {
-	case 'ultrahard':
+	case 'ultraHard':
 		computerPoints += 0.5;
 		break;
 	case 'almostImpossible':
