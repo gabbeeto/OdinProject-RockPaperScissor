@@ -99,7 +99,41 @@ color:#ACAD81;}
 margin: 20px;
 border: 2px solid white;
 border-radius: 30px;
-width: 400px;
-height: 400px;
+/*width: 400px;*/
+/*height: 400px;*/
+max-height: 70dvh;
+width: 90dvh;
+
+}
+
+
+#rock:hover, #paper:hover, #scissor:hover{
+cursor: pointer;
+}
+
+#rock:hover{
+content: url(images/rockButtonHover.png);
+}
+
+#paper:hover{
+content: url(images/paperButtonHover.png);
+}
+
+
+#scissor:hover{
+content: url(images/scissorButtonHover.png);
+}
+
+
+#green{
+color: #63B463;
+}
+
+
+#finalTextContainer{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
 
 }

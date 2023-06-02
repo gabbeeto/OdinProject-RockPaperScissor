@@ -134,13 +134,37 @@ message.style.color = '#ACAD81';
 }
 
 else {
-document.querySelector('#humanChoiceContainer').parentElement.removeChild(document.querySelector('#humanChoiceContainer'));
+document.querySelector('#humanChoiceContainer').style.display = 'none';
 
-let finalText = document.createElement('h1');
+
+const finalTextContainer = document.createElement('div');
+finalTextContainer.id = 'finalTextContainer';
+
+const finalText = document.createElement('h1');
 finalText.id = 'finalText';
 
 const endingImage = document.createElement('img');
 endingImage.id = 'endingImage';
+
+const resetButton = document.createElement('button');
+resetButton.innerText = 'Play again';
+resetButton.addEventListener('click', () => 
+	{
+		humanPoints = 0;
+		computerPoints =0;
+    computerDifficulty = undefined;
+		message.innerText = '';
+    humanPointText.innerHTML = `${playerName} points = ${computerPoints}`;
+    computerPointText.innerHTML = `Duck points = ${computerPoints}`;
+    finalText.parentElement.removeChild(finalText);
+    endingImage.parentElement.removeChild(endingImage);
+		document.querySelector('#difficultySystem').style.display = "flex";
+    resetButton.parentElement.removeChild(resetButton);
+	}
+
+)
+
+
 if(humanPoints > computerPoints){
 finalText.innerText = 'human won!!!!!.. you saved this planet agaisnt this evil duck...';
 endingImage.src = 'images/goodEnding.png';
@@ -150,8 +174,10 @@ else{
 finalText.innerText = 'you got defeated by the evil duck';
 endingImage.src = 'images/badEnding.png';
 }
-document.body.appendChild(finalText);
-document.body.appendChild(endingImage);
+document.body.appendChild(finalTextContainer);
+finalTextContainer.appendChild(finalText);
+finalTextContainer.appendChild(endingImage);
+finalTextContainer.appendChild(resetButton);
 
 }
 
@@ -175,6 +201,9 @@ switch (computerDifficulty) {
 	case 'almostImpossible':
 		humanPoints += 0.25;
 		break;
+	case 'realLife':
+		humanPoints += 0.10;
+		break;
 }
 }
 
@@ -196,6 +225,9 @@ switch (computerDifficulty) {
 	case 'almostImpossible':
 		computerPoints += 5;
 		break;
+	case 'realLife':
+		computerPoints += 6;
+		break;
 }
 }
 
@@ -206,6 +238,9 @@ switch (computerDifficulty) {
 		break;
 	case 'almostImpossible':
 		computerPoints += 1;
+		break;
+	case 'realLife':
+		computerPoints += 2.5;
 		break;
 }
 }
@@ -265,6 +300,11 @@ function getDifficulty(e) {
 			computerDifficulty = 'almostImpossible';
 			switchToTheGame();
 			break;
+	case difficulty[6]:
+			computerDifficulty = 'realLife';
+			switchToTheGame();
+			break;
+
 }
 }
 
