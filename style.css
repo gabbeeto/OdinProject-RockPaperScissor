@@ -1,4 +1,5 @@
 
+
 *{
 margin: 0;
 padding: 0;
@@ -135,5 +136,13 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
+
+}
+
+#buttonsDiv{
+display: flex;
+gap: 10px;
+justify-content: center;
+align-content: center;
 
 }

@@ -2,6 +2,9 @@ let humanChoice;
 let choice = ['rock', 'paper', 'scissor'];
 let humanPoints = 0;
 let computerPoints = 0;
+let resetButton;
+let difficultyResetButton;
+let nameResetButton;
 
 
 
@@ -23,22 +26,31 @@ hideNameInputContainer();
 showDifficultyContainer();
 
 //it also updates the human name
-updateHumanPoints();
+updateHumanPointsOnThePage();
 }
 
 function hideNameInputContainer(){
 document.querySelector('#nameInputContainer').style.display = "none";
 }
 
+function showNameInputContainer(){
+document.querySelector('#nameInputContainer').style.display = "flex";
+}
+
 function showDifficultyContainer(){
 document.querySelector('#difficultySystem').style.display = "flex";
 }
 
-function updateHumanPoints(){
+
+function hideDifficultyContainer(){
+document.querySelector('#difficultySystem').style.display = "none";
+}
+
+function updateHumanPointsOnThePage(){
 document.querySelector('#humanPoints').innerText = `${playerName} points = ${humanPoints}`;
 }
 
-function updateComputerPoints(){
+function updateComputerPointsOnThePage(){
 document.querySelector('#computerPoints').innerText = `Duck points = ${computerPoints}`;
 }
 
@@ -85,13 +97,10 @@ function setDifficulty(e) {
 
 
 function switchToTheGame(){
-hideNameInputContainer();
+hideDifficultyContainer();
 showTheGameContainer();
 }
 
-function hideDifficultyContainer(){
-document.querySelector('#difficultySystem').style.display = "none";
-}
 
 function showTheGameContainer(){
 document.querySelector('#humanChoiceContainer').style.display = "flex";
@@ -131,10 +140,6 @@ switch(PlayerchoiceContainer.target){
 
 
 
-let computerChoice;
-function getRandomChoiceForComputer() {
-computerChoice = choice[Math.round(Math.random() * 2)];
-}
 
 
 
@@ -158,26 +163,29 @@ endTheGame()
 
 
 
+
+
+
 function initiateTheGame(){
 switch (humanChoice) {
 	case 'rock':
 if(computerChoice == 'rock'){
 addUnfairPointsWhenHardDifficulty();
-updateComputerPoints();
+updateComputerPointsOnThePage();
 message.innerText = `it's a tie because both of you chose rock`;
 message.style.color = '#ACAD81';
 }
 
 else if(computerChoice == 'paper'){
 addPointsToComputer();
-updateComputerPoints()
+updateComputerPointsOnThePage()
 message.innerHTML = `duck wins because ${playerName} chose rock and duck chose 'paper'`;
 message.style.color = '#AD7979';
 }
 
 else if(computerChoice == 'scissor'){
 addPointsToHuman();
-updateHumanPoints();
+updateHumanPointsOnThePage();
 message.innerText = `${playerName} wins because duck chose scissor and ${playerName} chose rock`;
 message.style.color = '#7BA8A8';
 }
@@ -189,21 +197,21 @@ case 'paper':
 
 if(computerChoice == 'rock'){
 addPointsToHuman();
-updateHumanPoints();
+updateHumanPointsOnThePage();
 message.innerText = `${playerName} wins because duck chose 'rock' and ${playerName} chose paper`;
 message.style.color = '#7BA8A8';
 }
 
 else if(computerChoice == 'paper'){
 addUnfairPointsWhenHardDifficulty();
-updateComputerPoints();
+updateComputerPointsOnThePage();
 message.innerText = `it's a tie because both of you chose paper`;
 message.style.color = '#ACAD81';
 }
 
 else if(computerChoice == 'scissor'){
 addPointsToComputer();
-updateComputerPoints();
+updateComputerPointsOnThePage();
 message.innerText = `Duck wins because ${playerName} chose paper and duck chose 'scissor'`;
 	
 message.style.color = '#AD7979';
@@ -216,21 +224,21 @@ case 'scissor':
 
 if(computerChoice == 'rock'){
 addPointsToComputer();
-updateComputerPoints();
+updateComputerPointsOnThePage();
 message.innerText = `Duck wins because ${playerName} chose scissor and duck choose rock`;
 message.style.color = '#AD7979';
 }
 
 else if(computerChoice == 'paper'){
 addPointsToHuman();
-updateHumanPoints();
+updateHumanPointsOnThePage();
 message.innerText = `${playerName} wins because duck chose paper and ${playerName} chose scissor`;
 message.style.color = '#7BA8A8';
 }
 
 else if(computerChoice == 'scissor'){
 addUnfairPointsWhenHardDifficulty();
-updateComputerPoints();
+updateComputerPointsOnThePage();
 message.innerText = `it's a tie because both of you chose scissor`;
 message.style.color = '#ACAD81';
 }
@@ -242,6 +250,10 @@ message.style.color = '#ACAD81';
 }
 
 
+let computerChoice;
+function getRandomChoiceForComputer() {
+computerChoice = choice[Math.round(Math.random() * 2)];
+}
 
 
 function addPointsToHuman(){
@@ -326,24 +338,22 @@ finalText.id = 'finalText';
 const endingImage = document.createElement('img');
 endingImage.id = 'endingImage';
 
-const resetButton = document.createElement('button');
-resetButton.innerText = 'Play again';
-resetButton.addEventListener('click', () => 
-	{
-		humanPoints = 0;
-		computerPoints =0;
-    computerDifficulty = undefined;
-		message.innerText = '';
-    humanPointText.innerHTML = `${playerName} points = ${computerPoints}`;
-    computerPointText.innerHTML = `Duck points = ${computerPoints}`;
-    finalText.parentElement.removeChild(finalText);
-    endingImage.parentElement.removeChild(endingImage);
-		document.querySelector('#difficultySystem').style.display = "flex";
-    resetButton.parentElement.removeChild(resetButton);
-	}
+buttonsDiv = document.createElement('div');
+buttonsDiv.id = 'buttonsDiv';
 
-)
 
+nameResetButton = document.createElement('button');
+nameResetButton.innerText = 'Change name';
+nameResetButton.addEventListener('click', ResetEverythingAndOpenNameContainer)
+
+difficultyResetButton = document.createElement('button');
+difficultyResetButton.innerText = 'Change Difficulty';
+difficultyResetButton.addEventListener('click', ResetEverythingAndOpenDifficultyContainer)
+
+
+resetButton = document.createElement('button');
+resetButton.innerText = 'play Again';
+resetButton.addEventListener('click', resetEverythingAndDeleteButton);
 
 if(humanPoints > computerPoints){
 finalText.innerText = 'human won!!!!!.. you saved this planet agaisnt this evil duck...';
@@ -357,7 +367,11 @@ endingImage.src = 'images/badEnding.png';
 document.body.appendChild(finalTextContainer);
 finalTextContainer.appendChild(finalText);
 finalTextContainer.appendChild(endingImage);
-finalTextContainer.appendChild(resetButton);
+finalTextContainer.appendChild(buttonsDiv);
+
+buttonsDiv.appendChild(resetButton);
+buttonsDiv.appendChild(difficultyResetButton);
+buttonsDiv.appendChild(nameResetButton);
 
 
 }
@@ -366,4 +380,41 @@ finalTextContainer.appendChild(resetButton);
 
 
 
+function ResetEverythingAndOpenDifficultyContainer(){
+computerDifficulty = undefined;
+resetEverything();
+showDifficultyContainer();
+deleteAllButtons();
+};
 
+function ResetEverythingAndOpenNameContainer(){
+computerDifficulty = undefined;
+playerName = '';
+resetEverything();
+showNameInputContainer();
+deleteAllButtons();
+};
+
+
+function resetEverythingAndDeleteButton(){
+resetEverything();
+deleteAllButtons();
+showTheGameContainer();
+};
+
+function resetEverything(){
+humanPoints = 0;
+computerPoints =0;
+message.innerText = '';
+updateHumanPointsOnThePage();
+updateComputerPointsOnThePage();
+finalText.parentElement.removeChild(finalText);
+endingImage.parentElement.removeChild(endingImage);
+};
+
+function deleteAllButtons(){
+difficultyResetButton.parentElement.removeChild(difficultyResetButton);
+resetButton.parentElement.removeChild(resetButton);
+nameResetButton.parentElement.removeChild(nameResetButton);
+
+}
