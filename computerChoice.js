@@ -39,11 +39,14 @@ document.querySelector('#nameInputContainer').style.display = "flex";
 
 function showDifficultyContainer(){
 document.querySelector('#difficultySystem').style.display = "flex";
+
+document.querySelector('footer').style.display = "none";
 }
 
 
 function hideDifficultyContainer(){
 document.querySelector('#difficultySystem').style.display = "none";
+document.querySelector('footer').style.display = "none";
 }
 
 function updateHumanPointsOnThePage(){
@@ -364,7 +367,11 @@ else{
 finalText.innerText = 'you got defeated by the evil duck';
 endingImage.src = 'images/badEnding.png';
 }
-document.body.appendChild(finalTextContainer);
+
+
+footer = document.querySelector('footer');
+footer.style.display = 'flex';
+document.body.insertBefore(finalTextContainer, footer);
 finalTextContainer.appendChild(finalText);
 finalTextContainer.appendChild(endingImage);
 finalTextContainer.appendChild(buttonsDiv);
@@ -400,6 +407,8 @@ function resetEverythingAndDeleteButton(){
 resetEverything();
 deleteAllButtons();
 showTheGameContainer();
+document.querySelector('footer').style.display = 'none';
+
 };
 
 function resetEverything(){
